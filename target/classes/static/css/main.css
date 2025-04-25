@@ -1,0 +1,56 @@
+body {
+    background-image: url(/img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nav {
+    place-self: center;
+    padding: 10px;
+}
+
+a.nav-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 25px;
+    text-align: center;
+    border: 2px solid black;
+    color: aliceblue;
+    border-radius: 3px;
+    background-color: rgb(0,0,16, 0.6);
+    backdrop-filter: blur(3px);
+    text-decoration: none;
+    font-weight: bold;
+    width: 125px;
+}
+
+.main {
+    place-self: center;
+    background-color:  rgb(0,0,16, 0.6);
+    border: 2px solid  rgb(0,0,16, 0.6);
+    padding: 2em;
+    padding-inline: 12em;
+    backdrop-filter: blur(3px);
+    color: aliceblue;
+}
+
+#error {
+    place-self: center;
+    background-color:  rgba(0, 0, 16, 0.705);
+    padding-inline: 12em;
+    backdrop-filter: blur(3px);
+    font-size: larger;
+    color: rgb(255, 55, 95);
+}
+
+a {
+    color: rgb(100, 142, 255);
+}
+
+.option-button {
+    width: 200px;
+    height: 50px;
+    background-color: rgb(76, 76, 128);
+    border: 2px solid rgb(43, 43, 73);
+    color:aliceblue;
+}

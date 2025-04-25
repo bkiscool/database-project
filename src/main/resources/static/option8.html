@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project - CSCE 45203</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="/js/option8.js"></script>
+    </head>
+    <body>
+        <div class="nav">
+            <a href="index.html" class="nav-button">Home</a>
+            <a href="about.html" class="nav-button">About</a>
+        </div>
+        <div class="main">
+            <h1 class="header">Bonus</h1>
+            <p>View a list of all RAs, along with their monthly stipend, emergency contact, and resident building.</p>
+            <p id="ra-table"></p>
+            <p>Query:<br>SELECT RA.studentID, Student.name, RA.stipend, RA.emergencyContact, Building.name FROM RA JOIN Student ON RA.studentID = Student.studentID JOIN Assignment ON RA.studentID = Assignment.studentID JOIN Building ON Assignment.buildingID = Building.buildingID ORDER BY RA.studentID;</p>
+        </div>
+        <p id="error"></p>
+
+        <!--BONUS OPTION-->
+        <script>displayRATable()</script>
+
+    </body>
+</html>

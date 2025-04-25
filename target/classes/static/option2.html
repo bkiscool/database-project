@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project - CSCE 45203</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="/js/option2.js"></script>
+    </head>
+    <body>
+        <div class="nav">
+            <a href="index.html" class="nav-button">Home</a>
+            <a href="about.html" class="nav-button">About</a>
+        </div>
+        <div class="main">
+            <h1 class="header">Add Assignment</h1>
+            <p id="result">Insert values to add an assignment to the Assignment table.</p>
+            <p id="building-room-table-joined"></p>
+            <p id="student-table"></p>
+            <p id="assignment-table"></p>
+            <form>
+                <label>Student ID</label>
+                <input type="number" id="student-id" />
+
+                <label>Building ID</label>
+                <input type="number" id="building-id" />
+
+                <label>Room Number</label>
+                <input type="number" id="room-number" />
+            </form>
+            <button onclick="option2()">Submit</button>
+            <p>Note: Room compatibility assumes the student is fine with a room if it at least satisfies their "wants".<br>Example: A student wants AC, but a room with AC and a private bathroom is still compatible.</p>
+        </div>
+        <p id="error"></p>
+
+        <script>
+            /**
+             * Must run "display table functions" one-by-one
+             * so that the SQL Server doesn't receive more
+             * than one request at a time.
+             */
+            async function displayTables()
+            {
+                await displayBuildingRoomTableJoined();
+                await displayStudentTable();
+                await displayAssignmentTable();
+            }
+
+            displayTables();
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project - CSCE 45203</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="/js/option5.js"></script>
+    </head>
+    <body>
+        <div class="nav">
+            <a href="index.html" class="nav-button">Home</a>
+            <a href="about.html" class="nav-button">About</a>
+        </div>
+        <div class="main">
+            <h1 class="header">View Compatible Rooms</h1>
+            <p>Select a student to see compatible rooms.</p>
+            <span id="student-buttons"></span>
+            <p id="result"></p>
+            <p id="compatible-rooms-table"></p>
+            <p>Note: Room compatibility assumes the student is fine with a room if it at least satisfies their "wants".<br>Example: A student wants AC, but a room with AC and a private bathroom is still compatible.</p>
+        </div>
+        <p id="error"></p>
+
+        <script>displayStudentButtonsOption5()</script>
+
+    </body>
+</html>
