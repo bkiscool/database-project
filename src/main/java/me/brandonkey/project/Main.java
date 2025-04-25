@@ -1,6 +1,5 @@
 package me.brandonkey.project;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.slf4j.Logger;
