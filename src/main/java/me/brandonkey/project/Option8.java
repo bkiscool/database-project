@@ -26,7 +26,7 @@ public class Option8 { // THIS IS THE BONUS OPTION
         // Get the RAs
         try {
             String query = "SELECT RA.studentID, Student.name, RA.stipend, RA.emergencyContact, Building.name FROM RA JOIN Student ON RA.studentID = Student.studentID JOIN Assignment ON RA.studentID = Assignment.studentID JOIN Building ON Assignment.buildingID = Building.buildingID ORDER BY RA.studentID;";
-            ResultSet result = Main.DB.query(query);
+            ResultSet result = DB.query(query);
 
             // Add the RAs to the text table
             while (result.next())

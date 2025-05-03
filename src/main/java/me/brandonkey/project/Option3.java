@@ -41,7 +41,7 @@ public class Option3 {
         ResultSet result;
         try {
             String query = String.format("SELECT Student.name, Assignment.roomNumber FROM Student JOIN Assignment ON Student.studentID = Assignment.studentID WHERE Assignment.buildingID = '%s' ORDER BY Student.name;", buildingId);
-            result = Main.DB.query(query);
+            result = DB.query(query);
         } catch (SQLException e)
         {
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class Option3 {
         ResultSet result;
         try {
             String query = "SELECT buildingID, name FROM Building;";
-            result = Main.DB.query(query);
+            result = DB.query(query);
         } catch (SQLException e)
         {
             e.printStackTrace();

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class Main {
-    public static final DB DB = new DB();
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args)
@@ -28,7 +27,7 @@ public class Main {
             public void run()
             {
                 try {
-                    DB.disconnect();
+                    DB.getInstance().disconnect();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

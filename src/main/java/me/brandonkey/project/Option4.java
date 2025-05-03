@@ -30,7 +30,7 @@ public class Option4 {
         LinkedHashMap<String, String> buildlings = new LinkedHashMap<>();
         try {
             String query = String.format("SELECT buildingID, name FROM Building ORDER BY buildingID;");
-            ResultSet result = Main.DB.query(query);
+            ResultSet result = DB.query(query);
 
             while (result.next())
             {
@@ -56,7 +56,7 @@ public class Option4 {
         // Count the assignments and calculate the available rooms
         try {
             String assignmentQuery = "SELECT buildingID, roomNumber FROM Assignment ORDER BY buildingID;";
-            ResultSet assignmentResult = Main.DB.query(assignmentQuery);
+            ResultSet assignmentResult = DB.query(assignmentQuery);
 
             // Map of room to assignment count.
             // Key is buildingId + roomNumber
@@ -71,7 +71,7 @@ public class Option4 {
             }
 
             String roomQuery = "SELECT buildingID, roomNumber, numBedrooms FROM Room ORDER BY buildingID;";
-            ResultSet roomResult = Main.DB.query(roomQuery);
+            ResultSet roomResult = DB.query(roomQuery);
 
             // Calculate the available rooms and
             // add it to the text table

@@ -45,7 +45,7 @@ public class Option6 {
             }
 
             String query = String.format("SELECT * FROM Student WHERE studentID != '%s' %sORDER BY studentID;", studentId, requirements.toString());
-            ResultSet result = Main.DB.query(query);
+            ResultSet result = DB.query(query);
 
             // Add compatible students to the text table
             boolean isEmpty = true;
@@ -99,7 +99,7 @@ public class Option6 {
         ResultSet result;
         try {
             String query = "SELECT * FROM Student;";
-            result = Main.DB.query(query);
+            result = DB.query(query);
         } catch (SQLException e)
         {
             e.printStackTrace();

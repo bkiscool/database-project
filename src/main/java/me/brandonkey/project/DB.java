@@ -5,26 +5,37 @@ import java.sql.*;
 public class DB {
 
     // The instance variables for the class
+    private static DB db;
     private Connection connection;
     private Statement statement;
 
-    // The constructor for the class
-    public DB() {
+    // Singleton
+    public static DB getInstance()
+    {
+        try {
+            if (db != null && db.connection != null && db.statement != null && db.connection.isValid(2) && !db.statement.isClosed()) return db;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         // My credentials
         String username = "blkey";
         String password = "ielee1Ea";
 
+        db = new DB();
+
         try {
             // Make a connection to the SQL server
-            connect(username, password);
+            db.connect(username, password);
             // create a statement to hold mysql queries
-            statement = connection.createStatement();
+            db.statement = db.connection.createStatement();
 
         } catch (SQLException e)
         {
             e.printStackTrace();
         }
 
+        return db;
     }
 
     // Connect to the database
@@ -45,12 +56,13 @@ public class DB {
     }
 
     // Execute an SQL query passed in as a String parameter
-    public ResultSet query(String q) throws SQLException {
-        boolean hasResultSet = statement.execute(q);
+    public static ResultSet query(String q) throws SQLException {
+        DB db = getInstance();
+        boolean hasResultSet = db.statement.execute(q);
 
         if (hasResultSet)
         {
-            return statement.getResultSet();
+            return db.statement.getResultSet();
         }
 
         return null;

@@ -44,7 +44,7 @@ public class Option1 {
             int wantsPrivateBathroomValue = Boolean.valueOf(wantsPrivateBathroom) ? 1 : 0;
 
             String query = String.format("INSERT INTO Student VALUES('%s', '%s', %d, %d, %d);", studentId, name, wantsACValue, wantsDiningValue, wantsPrivateBathroomValue);
-            Main.DB.query(query);
+            DB.query(query);
         } catch (SQLException e)
         {
             // Error code 1062 is duplicate primary key
@@ -70,7 +70,7 @@ public class Option1 {
         ResultSet result;
         try {
             String query = "SELECT * FROM Student";
-            result = Main.DB.query(query);
+            result = DB.query(query);
         } catch (SQLException e)
         {
             e.printStackTrace();

@@ -31,7 +31,7 @@ public class Option7 {
         LinkedHashMap<String, String> buildings = new LinkedHashMap<>();
         try {
             String query = String.format("SELECT buildingID, name FROM Building ORDER BY buildingID;");
-            ResultSet result = Main.DB.query(query);
+            ResultSet result = DB.query(query);
 
             while (result.next())
             {
@@ -59,7 +59,7 @@ public class Option7 {
             for (String buildingId : buildings.keySet())
             {
                 String query = String.format("SELECT COUNT(*) FROM Room WHERE buildingID = '%s';", buildingId);
-                ResultSet result = Main.DB.query(query);
+                ResultSet result = DB.query(query);
 
                 result.next();
                 int numRooms = result.getInt(1);
@@ -89,7 +89,7 @@ public class Option7 {
         HashMap<String, Integer> buildingsAndNumBedrooms = new HashMap<>();
         try {
             String assignmentQuery = "SELECT buildingID, roomNumber FROM Assignment;";
-            ResultSet assignmentResult = Main.DB.query(assignmentQuery);
+            ResultSet assignmentResult = DB.query(assignmentQuery);
 
             // Map of room to number of assignments
             HashMap<String, Integer> roomAssignmentsCount = new HashMap<>(); // Key is buildingId = roomNumber
@@ -103,7 +103,7 @@ public class Option7 {
             }
 
             String roomQuery = "SELECT buildingID, roomNumber, numBedrooms FROM Room;";
-            ResultSet roomResult = Main.DB.query(roomQuery);
+            ResultSet roomResult = DB.query(roomQuery);
 
             // Calculate and add values to the maps
             while (roomResult.next())

@@ -30,7 +30,7 @@ public class Option5 {
         // Get compatible rooms
         try {
             String assignmentQuery = "SELECT buildingID, roomNumber FROM Assignment;";
-            ResultSet assignmentResult = Main.DB.query(assignmentQuery);
+            ResultSet assignmentResult = DB.query(assignmentQuery);
 
             // Map of room to number of assignments
             HashMap<String, Integer> roomAssignmentsCount = new HashMap<>(); // Key is buildingId + roomNumber
@@ -78,7 +78,7 @@ public class Option5 {
             }
 
             String roomQuery = String.format("SELECT Building.buildingID, Building.name, Room.roomNumber, Room.numBedrooms FROM Building JOIN Room ON Building.buildingID = Room.buildingID %sORDER BY Building.buildingID, Room.roomNumber;", requirements.toString());
-            ResultSet roomResult = Main.DB.query(roomQuery);
+            ResultSet roomResult = DB.query(roomQuery);
 
             // Add the rooms to the text table with a column saying if it is available or unavailable
             boolean isEmpty = true;
@@ -137,7 +137,7 @@ public class Option5 {
         ResultSet result;
         try {
             String query = "SELECT * FROM Student;";
-            result = Main.DB.query(query);
+            result = DB.query(query);
         } catch (SQLException e)
         {
             e.printStackTrace();

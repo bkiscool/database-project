@@ -39,7 +39,7 @@ public class Option2 {
         // Check that student ID exists
         try {
             String query = String.format("SELECT COUNT(*) FROM Student WHERE studentId = '%s';", studentId);
-            ResultSet result = Main.DB.query(query);
+            ResultSet result = DB.query(query);
 
             if (!(result.next() && result.getInt(1) > 0))
             {
@@ -58,7 +58,7 @@ public class Option2 {
         // Check that building ID exists
         try {
             String query = String.format("SELECT COUNT(*) FROM Building WHERE buildingId = '%s';", buildingId);
-            ResultSet result = Main.DB.query(query);
+            ResultSet result = DB.query(query);
 
             if (!(result.next() && result.getInt(1) > 0))
             {
@@ -77,7 +77,7 @@ public class Option2 {
         // Check that room number in the building exists
         try {
             String query = String.format("SELECT COUNT(*) FROM Room WHERE buildingId = '%s' AND roomNumber = '%s';", buildingId, roomNumber);
-            ResultSet result = Main.DB.query(query);
+            ResultSet result = DB.query(query);
 
             if (!(result.next() && result.getInt(1) > 0))
             {
@@ -97,14 +97,14 @@ public class Option2 {
         try {
             // Get number of bedrooms
             String bedroomsQuery = String.format("SELECT numBedrooms FROM Room WHERE buildingId = '%s' AND roomNumber = '%s';", buildingId, roomNumber);
-            ResultSet bedroomsResult = Main.DB.query(bedroomsQuery);
+            ResultSet bedroomsResult = DB.query(bedroomsQuery);
 
             bedroomsResult.next();
             int numBedrooms = bedroomsResult.getInt(1);
 
             // Get number of assignments to this room
             String assignmentsQuery = String.format("SELECT COUNT(*) FROM Assignment WHERE buildingId = '%s' AND roomNumber = '%s';", buildingId, roomNumber);
-            ResultSet assignmentsResult = Main.DB.query(assignmentsQuery);
+            ResultSet assignmentsResult = DB.query(assignmentsQuery);
 
             assignmentsResult.next();
             int numAssignments = assignmentsResult.getInt(1);
@@ -129,7 +129,7 @@ public class Option2 {
         try {
             // Get student with query
             String studentQuery = String.format("SELECT * FROM Student WHERE studentId = '%s';", studentId);
-            ResultSet studentResult = Main.DB.query(studentQuery);
+            ResultSet studentResult = DB.query(studentQuery);
 
             // Parse requirements from student query
             studentResult.next();
@@ -143,7 +143,7 @@ public class Option2 {
 
             // Get requirements from Room
             String roomQuery = String.format("SELECT * FROM Room WHERE buildingId = '%s' AND roomNumber = '%s';", buildingId, roomNumber);
-            ResultSet roomResult = Main.DB.query(roomQuery);
+            ResultSet roomResult = DB.query(roomQuery);
 
             // Parse requirements from room query
             roomResult.next();
@@ -151,7 +151,7 @@ public class Option2 {
 
             // Get requirements from Building
             String buildingQuery = String.format("SELECT * FROM Building WHERE buildingId = '%s';", buildingId);
-            ResultSet buildingResult = Main.DB.query(buildingQuery);
+            ResultSet buildingResult = DB.query(buildingQuery);
 
             // Parse requirements from building query
             buildingResult.next();
@@ -180,7 +180,7 @@ public class Option2 {
         // Add assignment to database
         try {
             String query = String.format("INSERT INTO Assignment VALUES('%s', '%s', '%s');", studentId, buildingId, roomNumber);
-            Main.DB.query(query);
+            DB.query(query);
         } catch (SQLException e)
         {
             if (e.getErrorCode() == 1062)
@@ -207,7 +207,7 @@ public class Option2 {
         ResultSet result;
         try {
             String query = "SELECT Building.buildingID, Room.roomNumber, Building.name, Building.address, Room.numBedrooms, Building.hasAC, Building.hasDining, Room.privateBathrooms FROM Building JOIN Room ON Building.buildingID = Room.buildingID;";
-            result = Main.DB.query(query);
+            result = DB.query(query);
         } catch (SQLException e)
         {
             e.printStackTrace();
@@ -266,7 +266,7 @@ public class Option2 {
         ResultSet result;
         try {
             String query = "SELECT * FROM Assignment;";
-            result = Main.DB.query(query);
+            result = DB.query(query);
         } catch (SQLException e)
         {
             e.printStackTrace();
